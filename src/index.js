@@ -2,6 +2,14 @@ import React, { Component } from "react";
 import ReactDom from "react-dom";
 
 import Post from "./component/Post";
+import MousePositionTracker from "./component/MousePositionTracker/";
+
+const style = {
+  fixed: {
+    position: "fixed",
+    backgroundColor: "#fff"
+  }
+};
 
 class App extends Component {
   render() {
@@ -40,9 +48,17 @@ class App extends Component {
     const postComponents = posts.map(p => (
       <Post thumb={p.thumb} title={p.title} desc={p.desc} />
     ));
-    console.log(postComponents);
 
-    return <React.Fragment>{postComponents}</React.Fragment>;
+    return (
+      <React.Fragment>
+        <MousePositionTracker>
+          {pos => {
+            return <p style={style.fixed}>{pos}</p>;
+          }}
+        </MousePositionTracker>
+        {postComponents}
+      </React.Fragment>
+    );
   }
 }
 
