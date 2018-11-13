@@ -11,6 +11,7 @@ const style = {
   }
 };
 
+
 class App extends Component {
   render() {
     const posts = [
